@@ -1,9 +1,22 @@
 package ch.bzz.footballmanager.model;
 
-import java.util.List;
-
 public class Squad {
-    private int squadID;
-    private double squadValue;
-    private List<Player> playerList;
+    private String squadUUID;
+    private String manager;
+
+    public String getSquadUUID() {
+        return squadUUID;
+    }
+
+    public void setSquadUUID(String squadUUID) {
+        this.squadUUID = squadUUID;
+    }
+
+    public String getManager() {
+        return manager;
+    }
+
+    public void setManager(String manager) {
+        this.manager = manager;
+    }
 }
