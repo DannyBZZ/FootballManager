@@ -1,5 +1,6 @@
 package ch.bzz.footballmanager.data;
 
+import ch.bzz.footballmanager.model.Club;
 import ch.bzz.footballmanager.model.Player;
 import ch.bzz.footballmanager.model.Squad;
 import ch.bzz.footballmanager.service.Config;
@@ -15,12 +16,15 @@ public class DataHandler {
     private static DataHandler instance = null;
     private List<Player> playerList;
     private List<Squad> squadList;
+    private List<Club> clubList;
 
     private DataHandler(){
         setPlayerList(new ArrayList<>());
         readPlayerJSON();
         setSquadList(new ArrayList<>());
         readSquadJSON();
+        setClubList(new ArrayList<>());
+        readClubJSON();
     }
 
     public static DataHandler getInstance() {
@@ -29,9 +33,6 @@ public class DataHandler {
         return instance;
     }
 
-    public List<Player> readAllPlayers(){
-        return getPlayerList();
-    }
 
     public Player readPlayerByUUID(String playerUUID){
         Player player = null;
@@ -43,13 +44,6 @@ public class DataHandler {
         return player;
     }
 
-    private List<Player> getPlayerList(){
-        return playerList;
-    }
-
-    public List<Squad> readAllSquads(){
-        return getSquadList();
-    }
 
     public Squad readSquadByUUID(String squadUUID){
         Squad squad = null;
@@ -59,6 +53,16 @@ public class DataHandler {
             }
         }
         return squad;
+    }
+
+    public Club readClubByUUID(String clubUUID){
+        Club club = null;
+        for (Club entry: getClubList()){
+            if (entry.getClubUUID().equals(clubUUID)){
+                club = entry;
+            }
+        }
+        return club;
     }
 
     private void readPlayerJSON() {
@@ -77,9 +81,6 @@ public class DataHandler {
         }
     }
 
-    /**
-     * reads the publishers from the JSON-file
-     */
     private void readSquadJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
@@ -97,8 +98,49 @@ public class DataHandler {
         }
     }
 
+    private void readClubJSON() {
+        try {
+            byte[] jsonData = Files.readAllBytes(
+                    Paths.get(
+                            Config.getProperty("clubJSON")
+                    )
+            );
+            ObjectMapper objectMapper = new ObjectMapper();
+            Club[] clubs = objectMapper.readValue(jsonData, Club[].class);
+            for (Club club : clubs) {
+                getClubList().add(club);
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public List<Player> readAllPlayers(){
+        return getPlayerList();
+    }
+
+    public List<Squad> readAllSquads(){
+        return getSquadList();
+    }
+
+    public List<Club> readAllClubs(){
+        return getClubList();
+    }
+
+    private List<Player> getPlayerList(){
+        return playerList;
+    }
+
     private List<Squad> getSquadList(){
         return squadList;
+    }
+
+    public List<Club> getClubList() {
+        return clubList;
+    }
+
+    public void setClubList(List<Club> clubList) {
+        this.clubList = clubList;
     }
 
     public void setPlayerList(List<Player> playerList) {

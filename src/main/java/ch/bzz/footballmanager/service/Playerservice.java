@@ -32,9 +32,13 @@ public class Playerservice {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readPlayers(@QueryParam("playerUUID") String playerUUID) {
+        int httpStatus = 200;
         Player player = DataHandler.getInstance().readPlayerByUUID(playerUUID);
+        if(player == null){
+            httpStatus = 410;
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(player)
                 .build();
     }

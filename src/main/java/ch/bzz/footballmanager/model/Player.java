@@ -8,6 +8,7 @@ public class Player {
 
     @JsonIgnore
     private Squad squad;
+    private Club club;
 
     private String playerUUID;
     private String firstname;
@@ -16,6 +17,14 @@ public class Player {
     private double height;
     private int weight;
     private String phonenumber;
+
+    public Club getClub() {
+        return club;
+    }
+
+    public void setClub(Club club) {
+        this.club = club;
+    }
 
     public Squad getSquad() {
         return squad;
