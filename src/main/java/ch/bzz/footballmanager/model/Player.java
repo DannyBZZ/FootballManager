@@ -1,7 +1,5 @@
 package ch.bzz.footballmanager.model;
 
-
-import ch.bzz.footballmanager.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Player {

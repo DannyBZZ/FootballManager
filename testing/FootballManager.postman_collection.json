@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "d42bfeac-24b0-4d64-8a42-33a2f349e309",
+		"name": "FootballManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01_Testservice",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AllPlayers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/player/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"player",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AllSquads",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/squad/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"squad",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AllClubs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/club/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"club",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PlayerByUUID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/player/read?playerUUID=2951e62e-d8e5-11ec-9d64-0242ac120002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"player",
+						"read"
+					],
+					"query": [
+						{
+							"key": "playerUUID",
+							"value": "2951e62e-d8e5-11ec-9d64-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SquadByUUID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/squad/read?squadUUID=5bff183a-d8e5-11ec-9d64-0242ac120002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"squad",
+						"read"
+					],
+					"query": [
+						{
+							"key": "squadUUID",
+							"value": "5bff183a-d8e5-11ec-9d64-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ClubByUUID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/club/read?clubUUID=4cf7ae2a-d8e4-11ec-9d64-0242ac120002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"club",
+						"read"
+					],
+					"query": [
+						{
+							"key": "clubUUID",
+							"value": "4cf7ae2a-d8e4-11ec-9d64-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PlayerByUUID_OutOfRange",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/player/read?playerUUID=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"player",
+						"read"
+					],
+					"query": [
+						{
+							"key": "playerUUID",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InvalidURL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/squad/listss",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"squad",
+						"listss"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

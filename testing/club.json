@@ -1,0 +1,20 @@
+[
+    {
+        "clubUUID": "4cf7ae2a-d8e4-11ec-9d64-0242ac120002",
+        "name": "Inter",
+        "league": "Serie A",
+        "stadium": "San Siro"
+    },
+    {
+        "clubUUID": "535762b0-d8e4-11ec-9d64-0242ac120002",
+        "name": "Juventus",
+        "league": "Serie A",
+        "stadium": "Allianz Stadium"
+    },
+    {
+        "clubUUID": "587e27ba-d8e4-11ec-9d64-0242ac120002",
+        "name": "Barcelona",
+        "league": "LaLiga",
+        "stadium": "Camp Nou"
+    }
+]

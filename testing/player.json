@@ -1,0 +1,38 @@
+[
+    {
+        "playerUUID": "21c35082-d8e5-11ec-9d64-0242ac120002",
+        "firstname": "Matteo",
+        "lastname": "Darmian",
+        "nationality": "Italy",
+        "height": 1.80,
+        "weight": 80,
+        "phonenumber": "0039 0645 345 235"
+    },
+    {
+        "playerUUID": "2951e62e-d8e5-11ec-9d64-0242ac120002",
+        "firstname": "Ivan",
+        "lastname": "Perisic",
+        "nationality": "Croatia",
+        "height": 1.85,
+        "weight": 85,
+        "phonenumber": "0021 0343 323 333"
+    },
+    {
+        "playerUUID": "2e7ff370-d8e5-11ec-9d64-0242ac120002",
+        "firstname": "Leo",
+        "lastname": "Messi",
+        "nationality": "Argentina",
+        "height": 1.69,
+        "weight": 75,
+        "phonenumber": "0054 9 223 123"
+    },
+    {
+        "playerUUID": "33ce461a-d8e5-11ec-9d64-0242ac120002",
+        "firstname": "Cristiano",
+        "lastname": "Ronaldo",
+        "nationality": "Portugal",
+        "height": 1.90,
+        "weight": 87,
+        "phonenumber": "00351 345 543"
+    }
+]

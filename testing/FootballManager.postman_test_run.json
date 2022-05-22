@@ -1,0 +1,216 @@
+{
+	"id": "0ec8fb10-bd72-4264-b581-c2c1420c9da2",
+	"name": "FootballManager",
+	"timestamp": "2022-05-22T15:21:04.916Z",
+	"collection_id": "d42bfeac-24b0-4d64-8a42-33a2f349e309",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "32be83d3-353c-4273-8bf7-66bffbe0a68a",
+			"name": "01_Testservice",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/test/test",
+			"time": 73,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				73
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "51ead726-e0c1-412e-9547-a6839ffba4fc",
+			"name": "AllPlayers",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/list",
+			"time": 54,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				54
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6141b885-7545-4191-83aa-50fcfc431106",
+			"name": "AllSquads",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/list",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e71dd2af-f467-41af-8883-a7362137d877",
+			"name": "AllClubs",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/club/list",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "3c1a3c95-8866-4210-8835-1a5de5e14c62",
+			"name": "PlayerByUUID",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/read?playerUUID=2951e62e-d8e5-11ec-9d64-0242ac120002",
+			"time": 32,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				32
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0fd18e9c-1eec-41db-ace3-89b38c33d855",
+			"name": "SquadByUUID",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/read?squadUUID=5bff183a-d8e5-11ec-9d64-0242ac120002",
+			"time": 27,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				27
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5fbb3d23-ddb6-4fd6-a843-9c9e6f43a9f1",
+			"name": "ClubByUUID",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/club/read?clubUUID=4cf7ae2a-d8e4-11ec-9d64-0242ac120002",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				12
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "44af82a7-3910-463b-8741-360c7d094ad8",
+			"name": "PlayerByUUID_OutOfRange",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/read?playerUUID=10",
+			"time": 21,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				21
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2a9e1f87-f53d-4625-995c-7f75f776b8ac",
+			"name": "InvalidURL",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/listss",
+			"time": 31,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				31
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 263,
+	"collection": {
+		"requests": [
+			{
+				"id": "32be83d3-353c-4273-8bf7-66bffbe0a68a",
+				"method": "GET"
+			},
+			{
+				"id": "51ead726-e0c1-412e-9547-a6839ffba4fc",
+				"method": "GET"
+			},
+			{
+				"id": "6141b885-7545-4191-83aa-50fcfc431106",
+				"method": "GET"
+			},
+			{
+				"id": "e71dd2af-f467-41af-8883-a7362137d877",
+				"method": "GET"
+			},
+			{
+				"id": "3c1a3c95-8866-4210-8835-1a5de5e14c62",
+				"method": "GET"
+			},
+			{
+				"id": "0fd18e9c-1eec-41db-ace3-89b38c33d855",
+				"method": "GET"
+			},
+			{
+				"id": "5fbb3d23-ddb6-4fd6-a843-9c9e6f43a9f1",
+				"method": "GET"
+			},
+			{
+				"id": "44af82a7-3910-463b-8741-360c7d094ad8",
+				"method": "GET"
+			},
+			{
+				"id": "2a9e1f87-f53d-4625-995c-7f75f776b8ac",
+				"method": "GET"
+			}
+		]
+	}
+}

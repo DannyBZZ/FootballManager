@@ -1,0 +1,17 @@
+[
+  {
+    "squadUUID": "5bff183a-d8e5-11ec-9d64-0242ac120002",
+    "manager": "Guardiola",
+    "nationality": "Spain"
+  },
+  {
+    "squadUUID": "612f9fdc-d8e5-11ec-9d64-0242ac120002",
+    "manager": "Inzaghi",
+    "nationality": "Italy"
+  },
+  {
+    "squadUUID": "65fbd012-d8e5-11ec-9d64-0242ac120002",
+    "manager": "Allegri",
+    "nationality": "Italy"
+  }
+]
