@@ -11,8 +11,16 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+/**
+ * clubtest service
+ */
 @Path("club")
 public class Clubservice {
+
+    /**
+     * confirms the application runs
+     * @return  message
+     */
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)

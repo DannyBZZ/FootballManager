@@ -12,12 +12,18 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * reads and writes the data in the JSON-files
+ */
 public class DataHandler {
     private static DataHandler instance = null;
     private List<Player> playerList;
     private List<Squad> squadList;
     private List<Club> clubList;
 
+    /**
+     * private constructor defeats instantiation
+     */
     private DataHandler(){
         setPlayerList(new ArrayList<>());
         readPlayerJSON();
@@ -27,13 +33,21 @@ public class DataHandler {
         readClubJSON();
     }
 
+    /**
+     * gets the only instance of this class
+     * @return
+     */
     public static DataHandler getInstance() {
         if (instance == null)
             instance = new DataHandler();
         return instance;
     }
 
-
+    /**
+     * reads a player by its uuid
+     * @param playerUUID
+     * @return the Player (null=not found)
+     */
     public Player readPlayerByUUID(String playerUUID){
         Player player = null;
         for (Player entry: getPlayerList()){
@@ -44,7 +58,11 @@ public class DataHandler {
         return player;
     }
 
-
+    /**
+     * reads a squad by its uuid
+     * @param squadUUID
+     * @return the Squad (null=not found)
+     */
     public Squad readSquadByUUID(String squadUUID){
         Squad squad = null;
         for (Squad entry: getSquadList()){
@@ -55,6 +73,11 @@ public class DataHandler {
         return squad;
     }
 
+    /**
+     * reads a club by its uuid
+     * @param clubUUID
+     * @return the Club (null=not found)
+     */
     public Club readClubByUUID(String clubUUID){
         Club club = null;
         for (Club entry: getClubList()){
@@ -65,6 +88,9 @@ public class DataHandler {
         return club;
     }
 
+    /**
+     * reads the players from the JSON-file
+     */
     private void readPlayerJSON() {
         try {
             String path = Config.getProperty("playerJSON");
@@ -81,6 +107,9 @@ public class DataHandler {
         }
     }
 
+    /**
+     * reads the squads from the JSON-file
+     */
     private void readSquadJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
@@ -98,6 +127,9 @@ public class DataHandler {
         }
     }
 
+    /**
+     * reads the clubs from the JSON-file
+     */
     private void readClubJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
@@ -115,38 +147,80 @@ public class DataHandler {
         }
     }
 
+    /**
+     * reads all players
+     * @return list of players
+     */
     public List<Player> readAllPlayers(){
         return getPlayerList();
     }
 
+    /**
+     * reads all squads
+     * @return list of squads
+     */
     public List<Squad> readAllSquads(){
         return getSquadList();
     }
 
+    /**
+     * reads all clubs
+     * @return list of clubs
+     */
     public List<Club> readAllClubs(){
         return getClubList();
     }
 
+    /**
+     * gets playerList
+     *
+     * @return value of playerList
+     */
     private List<Player> getPlayerList(){
         return playerList;
     }
 
+    /**
+     * gets squadList
+     *
+     * @return value of squadList
+     */
     private List<Squad> getSquadList(){
         return squadList;
     }
 
+    /**
+     * gets clubList
+     *
+     * @return value of clubList
+     */
     public List<Club> getClubList() {
         return clubList;
     }
 
+    /**
+     * sets clubList
+     *
+     * @param clubList the value to set
+     */
     public void setClubList(List<Club> clubList) {
         this.clubList = clubList;
     }
 
+    /**
+     * sets playerList
+     *
+     * @param playerList the value to set
+     */
     public void setPlayerList(List<Player> playerList) {
         this.playerList = playerList;
     }
 
+    /**
+     * sets squadList
+     *
+     * @param squadList the value to set
+     */
     public void setSquadList(List<Squad> squadList) {
         this.squadList = squadList;
     }

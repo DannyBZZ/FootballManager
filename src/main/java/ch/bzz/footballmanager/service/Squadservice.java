@@ -12,8 +12,16 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+/**
+ * squadtest service
+ */
 @Path("squad")
 public class Squadservice {
+
+    /**
+     * confirms the application runs
+     * @return  message
+     */
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)

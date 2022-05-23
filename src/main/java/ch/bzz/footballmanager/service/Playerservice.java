@@ -12,11 +12,15 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
- * Playertest service
+ * playertest service
  */
 @Path("player")
 public class Playerservice {
 
+    /**
+     * confirms the application runs
+     * @return  message
+     */
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
