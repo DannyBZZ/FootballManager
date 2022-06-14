@@ -1,5 +1,6 @@
 package ch.bzz.footballmanager.model;
 
+import ch.bzz.footballmanager.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Player {
@@ -15,6 +16,28 @@ public class Player {
     private double height;
     private int weight;
     private String phonenumber;
+
+    /**
+     * gets the clubUUID from the Club-object
+     * @return the clubUUID
+     */
+    public String getClubUUID() {
+        if (getClub()== null) return null;
+        return getClub().getClubUUID();
+    }
+
+    /**
+     * creates a Publisher-object without the booklist
+     * @param clubUUID the key
+     */
+    public void setClubUUID(String clubUUID) {
+        setClub(new Club());
+        Club club = DataHandler.getInstance().readClubByUUID(clubUUID);
+        getClub().setClubUUID(clubUUID);
+        getClub().setName(club.getName());
+        getClub().setLeague(club.getLeague());
+        getClub().setStadium(club.getStadium());
+    }
 
     /**
      * gets club

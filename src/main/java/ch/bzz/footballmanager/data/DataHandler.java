@@ -4,9 +4,12 @@ import ch.bzz.footballmanager.model.Club;
 import ch.bzz.footballmanager.model.Player;
 import ch.bzz.footballmanager.model.Squad;
 import ch.bzz.footballmanager.service.Config;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -142,6 +145,81 @@ public class DataHandler {
             for (Club club : clubs) {
                 getClubList().add(club);
             }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void insertPlayer(Player player) {
+        getInstance().getPlayerList().add(player);
+        writePlayerJSON();
+    }
+
+    public static void insertSquad(Squad squad) {
+        getInstance().getSquadList().add(squad);
+        writeSquadJSON();
+    }
+
+    /**
+     * updates the playetList
+     */
+    public static void updatePlayer() {
+        writePlayerJSON();
+    }
+
+    public static void updateSquad() {
+        writeSquadJSON();
+    }
+
+    public static boolean deletePlayer(String playerUUID) {
+        Player player = instance.readPlayerByUUID(playerUUID);
+        if (player != null) {
+            getInstance().getPlayerList().remove(player);
+            writePlayerJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean deleteSquad(String squadUUID) {
+        Squad squad = instance.readSquadByUUID(squadUUID);
+        if (squad != null) {
+            getInstance().getSquadList().remove(squad);
+            writeSquadJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private static void writePlayerJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String playerPath = Config.getProperty("playerJSON");
+        try {
+            fileOutputStream = new FileOutputStream(playerPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, instance.getPlayerList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private static void writeSquadJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String squadPath = Config.getProperty("squadJSON");
+        try {
+            fileOutputStream = new FileOutputStream(squadPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, instance.getSquadList());
         } catch (IOException ex) {
             ex.printStackTrace();
         }

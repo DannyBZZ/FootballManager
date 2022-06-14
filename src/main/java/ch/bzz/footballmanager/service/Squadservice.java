@@ -4,10 +4,7 @@ import ch.bzz.footballmanager.data.DataHandler;
 import ch.bzz.footballmanager.model.Player;
 import ch.bzz.footballmanager.model.Squad;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -45,6 +42,22 @@ public class Squadservice {
         return Response
                 .status(httpStatus)
                 .entity(squad)
+                .build();
+    }
+
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteSquad(
+            @QueryParam("squadUUID") String squadUUID
+    ){
+        int httpStatus = 200;
+        if (!DataHandler.deleteSquad(squadUUID)){
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
                 .build();
     }
 }
