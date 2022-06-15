@@ -179,5 +179,4 @@ public class Playerservice {
         player.setWeight(weight);
         player.setPhonenumber(phonenumber);
     }
-
 }

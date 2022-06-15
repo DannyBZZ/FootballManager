@@ -92,6 +92,13 @@ public class DataHandler {
     }
 
     /**
+     * updates the squadList
+     */
+    public static void updateSquad() {
+        writeSquadJSON();
+    }
+
+    /**
      * inserts a new player into the playerlist
      *
      * @param player the book to be saved
@@ -99,6 +106,16 @@ public class DataHandler {
     public static void insertPlayer(Player player) {
         getPlayerList().add(player);
         writePlayerJSON();
+    }
+
+    /**
+     * inserts a new squad into the squadlist
+     *
+     * @param squad the squad to be saved
+     */
+    public static void insertSquad(Squad squad) {
+        getSquadList().add(squad);
+        writeSquadJSON();
     }
 
     /**
@@ -111,6 +128,22 @@ public class DataHandler {
         if (player != null) {
             getPlayerList().remove(player);
             writePlayerJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * deletes a squad identified by the squadUUID
+     * @param squadUUID  the key
+     * @return  success=true/false
+     */
+    public static boolean deleteSquad(String squadUUID) {
+        Squad squad = readSquadByUUID(squadUUID);
+        if (squad != null) {
+            getSquadList().remove(squad);
+            writeSquadJSON();
             return true;
         } else {
             return false;
@@ -190,6 +223,25 @@ public class DataHandler {
             fileOutputStream = new FileOutputStream(bookPath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
             objectWriter.writeValue(fileWriter, getPlayerList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * writes the squadList to the JSON-file
+     */
+    private static void writeSquadJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String bookPath = Config.getProperty("squadJSON");
+        try {
+            fileOutputStream = new FileOutputStream(bookPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getSquadList());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
