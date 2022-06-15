@@ -32,7 +32,7 @@ public class Player {
      */
     public void setClubUUID(String clubUUID) {
         setClub(new Club());
-        Club club = DataHandler.getInstance().readClubByUUID(clubUUID);
+        Club club = DataHandler.readClubByUUID(clubUUID);
         getClub().setClubUUID(clubUUID);
         getClub().setName(club.getName());
         getClub().setLeague(club.getLeague());

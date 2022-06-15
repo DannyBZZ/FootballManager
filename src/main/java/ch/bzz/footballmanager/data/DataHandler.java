@@ -19,31 +19,19 @@ import java.util.List;
  * reads and writes the data in the JSON-files
  */
 public class DataHandler {
-    private static DataHandler instance = null;
-    private List<Player> playerList;
-    private List<Squad> squadList;
-    private List<Club> clubList;
+    private static List<Player> playerList;
+    private static List<Squad> squadList;
+    private static List<Club> clubList;
 
     /**
      * private constructor defeats instantiation
      */
     private DataHandler(){
-        setPlayerList(new ArrayList<>());
-        readPlayerJSON();
-        setSquadList(new ArrayList<>());
-        readSquadJSON();
-        setClubList(new ArrayList<>());
-        readClubJSON();
     }
 
-    /**
-     * gets the only instance of this class
-     * @return
-     */
-    public static DataHandler getInstance() {
-        if (instance == null)
-            instance = new DataHandler();
-        return instance;
+    public static void initLists() {
+        DataHandler.setPlayerList(null);
+        DataHandler.setSquadList(null);
     }
 
     /**
@@ -51,7 +39,7 @@ public class DataHandler {
      * @param playerUUID
      * @return the Player (null=not found)
      */
-    public Player readPlayerByUUID(String playerUUID){
+    public static Player readPlayerByUUID(String playerUUID){
         Player player = null;
         for (Player entry: getPlayerList()){
             if (entry.getPlayerUUID().equals(playerUUID)){
@@ -66,7 +54,7 @@ public class DataHandler {
      * @param squadUUID
      * @return the Squad (null=not found)
      */
-    public Squad readSquadByUUID(String squadUUID){
+    public static Squad readSquadByUUID(String squadUUID){
         Squad squad = null;
         for (Squad entry: getSquadList()){
             if (entry.getSquadUUID().equals(squadUUID)){
@@ -81,7 +69,7 @@ public class DataHandler {
      * @param clubUUID
      * @return the Club (null=not found)
      */
-    public Club readClubByUUID(String clubUUID){
+    public static Club readClubByUUID(String clubUUID){
         Club club = null;
         for (Club entry: getClubList()){
             if (entry.getClubUUID().equals(clubUUID)){
@@ -94,7 +82,7 @@ public class DataHandler {
     /**
      * reads the players from the JSON-file
      */
-    private void readPlayerJSON() {
+    private static void readPlayerJSON() {
         try {
             String path = Config.getProperty("playerJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -113,7 +101,7 @@ public class DataHandler {
     /**
      * reads the squads from the JSON-file
      */
-    private void readSquadJSON() {
+    private static void readSquadJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -133,7 +121,7 @@ public class DataHandler {
     /**
      * reads the clubs from the JSON-file
      */
-    private void readClubJSON() {
+    private static void readClubJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -151,12 +139,12 @@ public class DataHandler {
     }
 
     public static void insertPlayer(Player player) {
-        getInstance().getPlayerList().add(player);
+        getPlayerList().add(player);
         writePlayerJSON();
     }
 
     public static void insertSquad(Squad squad) {
-        getInstance().getSquadList().add(squad);
+        getSquadList().add(squad);
         writeSquadJSON();
     }
 
@@ -172,9 +160,9 @@ public class DataHandler {
     }
 
     public static boolean deletePlayer(String playerUUID) {
-        Player player = instance.readPlayerByUUID(playerUUID);
+        Player player = readPlayerByUUID(playerUUID);
         if (player != null) {
-            getInstance().getPlayerList().remove(player);
+            getPlayerList().remove(player);
             writePlayerJSON();
             return true;
         } else {
@@ -183,9 +171,9 @@ public class DataHandler {
     }
 
     public static boolean deleteSquad(String squadUUID) {
-        Squad squad = instance.readSquadByUUID(squadUUID);
+        Squad squad = readSquadByUUID(squadUUID);
         if (squad != null) {
-            getInstance().getSquadList().remove(squad);
+            getSquadList().remove(squad);
             writeSquadJSON();
             return true;
         } else {
@@ -203,7 +191,7 @@ public class DataHandler {
         try {
             fileOutputStream = new FileOutputStream(playerPath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
-            objectWriter.writeValue(fileWriter, instance.getPlayerList());
+            objectWriter.writeValue(fileWriter, getPlayerList());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -219,7 +207,7 @@ public class DataHandler {
         try {
             fileOutputStream = new FileOutputStream(squadPath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
-            objectWriter.writeValue(fileWriter, instance.getSquadList());
+            objectWriter.writeValue(fileWriter, getSquadList());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -229,7 +217,7 @@ public class DataHandler {
      * reads all players
      * @return list of players
      */
-    public List<Player> readAllPlayers(){
+    public static List<Player> readAllPlayers(){
         return getPlayerList();
     }
 
@@ -237,7 +225,7 @@ public class DataHandler {
      * reads all squads
      * @return list of squads
      */
-    public List<Squad> readAllSquads(){
+    public static List<Squad> readAllSquads(){
         return getSquadList();
     }
 
@@ -245,7 +233,7 @@ public class DataHandler {
      * reads all clubs
      * @return list of clubs
      */
-    public List<Club> readAllClubs(){
+    public static List<Club> readAllClubs(){
         return getClubList();
     }
 
@@ -254,7 +242,11 @@ public class DataHandler {
      *
      * @return value of playerList
      */
-    private List<Player> getPlayerList(){
+    private static List<Player> getPlayerList(){
+        if (playerList == null) {
+            setPlayerList(new ArrayList<>());
+            readPlayerJSON();
+        }
         return playerList;
     }
 
@@ -263,7 +255,11 @@ public class DataHandler {
      *
      * @return value of squadList
      */
-    private List<Squad> getSquadList(){
+    private static List<Squad> getSquadList(){
+        if (squadList == null) {
+            setSquadList(new ArrayList<>());
+            readSquadJSON();
+        }
         return squadList;
     }
 
@@ -272,7 +268,7 @@ public class DataHandler {
      *
      * @return value of clubList
      */
-    public List<Club> getClubList() {
+    public static List<Club> getClubList() {
         return clubList;
     }
 
@@ -281,8 +277,8 @@ public class DataHandler {
      *
      * @param clubList the value to set
      */
-    public void setClubList(List<Club> clubList) {
-        this.clubList = clubList;
+    public static void setClubList(List<Club> clubList) {
+        DataHandler.clubList = clubList;
     }
 
     /**
@@ -290,8 +286,8 @@ public class DataHandler {
      *
      * @param playerList the value to set
      */
-    public void setPlayerList(List<Player> playerList) {
-        this.playerList = playerList;
+    public static void setPlayerList(List<Player> playerList) {
+        DataHandler.playerList = playerList;
     }
 
     /**
@@ -299,7 +295,7 @@ public class DataHandler {
      *
      * @param squadList the value to set
      */
-    public void setSquadList(List<Squad> squadList) {
-        this.squadList = squadList;
+    public static void setSquadList(List<Squad> squadList) {
+        DataHandler.squadList = squadList;
     }
 }

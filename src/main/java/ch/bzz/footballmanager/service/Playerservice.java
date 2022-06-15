@@ -23,7 +23,7 @@ public class Playerservice {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listPlayers() {
-        List<Player> playerList = DataHandler.getInstance().readAllPlayers();
+        List<Player> playerList = DataHandler.readAllPlayers();
         return Response
                 .status(200)
                 .entity(playerList)
@@ -35,7 +35,7 @@ public class Playerservice {
     @Produces(MediaType.APPLICATION_JSON)
     public Response readPlayers(@QueryParam("playerUUID") String playerUUID) {
         int httpStatus = 200;
-        Player player = DataHandler.getInstance().readPlayerByUUID(playerUUID);
+        Player player = DataHandler.readPlayerByUUID(playerUUID);
         if(player == null){
             httpStatus = 410;
         }
@@ -88,7 +88,7 @@ public class Playerservice {
             @FormParam("clubUUID") String clubUUID
     ){
         int httpStatus = 200;
-        Player player = DataHandler.getInstance().readPlayerByUUID(playerUUID);
+        Player player = DataHandler.readPlayerByUUID(playerUUID);
         if(player != null){
             player.setFirstname(firstname);
             player.setLastname(lastname);
