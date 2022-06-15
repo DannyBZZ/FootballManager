@@ -26,7 +26,7 @@ public class Squadservice {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listSquads() {
-        List<Squad> squadList = DataHandler.getInstance().readAllSquads();
+        List<Squad> squadList = DataHandler.readAllSquads();
         return Response
                 .status(200)
                 .entity(squadList)
@@ -38,7 +38,7 @@ public class Squadservice {
     @Produces(MediaType.APPLICATION_JSON)
     public Response readPlayers(@QueryParam("squadUUID") String squadUUID) {
         int httpStatus = 200;
-        Squad squad = DataHandler.getInstance().readSquadByUUID(squadUUID);
+        Squad squad = DataHandler.readSquadByUUID(squadUUID);
         if(squad == null){
             httpStatus = 410;
         }

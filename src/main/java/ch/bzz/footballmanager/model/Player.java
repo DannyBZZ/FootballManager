@@ -4,10 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Player {
 
-    @JsonIgnore
-    private Squad squad;
-    private Club club;
-
     private String playerUUID;
     private String firstname;
     private String lastname;
@@ -15,42 +11,6 @@ public class Player {
     private double height;
     private int weight;
     private String phonenumber;
-
-    /**
-     * gets club
-     *
-     * @return value of club
-     */
-    public Club getClub() {
-        return club;
-    }
-
-    /**
-     * sets club
-     *
-     * @param club the value to set
-     */
-    public void setClub(Club club) {
-        this.club = club;
-    }
-
-    /**
-     * gets squad
-     *
-     * @return value of squad
-     */
-    public Squad getSquad() {
-        return squad;
-    }
-
-    /**
-     * sets squad
-     *
-     * @param squad the value to set
-     */
-    public void setSquad(Squad squad) {
-        this.squad = squad;
-    }
 
     /**
      * gets playerUUID

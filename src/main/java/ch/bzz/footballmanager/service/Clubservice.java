@@ -25,7 +25,7 @@ public class Clubservice {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listClubs() {
-        List<Club> clubList = DataHandler.getInstance().readAllClubs();
+        List<Club> clubList = DataHandler.readAllClubs();
         return Response
                 .status(200)
                 .entity(clubList)
@@ -37,7 +37,7 @@ public class Clubservice {
     @Produces(MediaType.APPLICATION_JSON)
     public Response readClubs(@QueryParam("clubUUID") String clubUUID) {
         int httpStatus = 200;
-        Club club = DataHandler.getInstance().readClubByUUID(clubUUID);
+        Club club = DataHandler.readClubByUUID(clubUUID);
         if(club == null){
             httpStatus = 410;
         }
