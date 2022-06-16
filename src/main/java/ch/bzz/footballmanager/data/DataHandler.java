@@ -99,6 +99,13 @@ public class DataHandler {
     }
 
     /**
+     * updates the clubList
+     */
+    public static void updateClub() {
+        writeClubJSON();
+    }
+
+    /**
      * inserts a new player into the playerlist
      *
      * @param player the book to be saved
@@ -116,6 +123,16 @@ public class DataHandler {
     public static void insertSquad(Squad squad) {
         getSquadList().add(squad);
         writeSquadJSON();
+    }
+
+    /**
+     * inserts a new club into the clublist
+     *
+     * @param club the squad to be saved
+     */
+    public static void insertClub(Club club) {
+        getClubList().add(club);
+        writeClubJSON();
     }
 
     /**
@@ -144,6 +161,22 @@ public class DataHandler {
         if (squad != null) {
             getSquadList().remove(squad);
             writeSquadJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * deletes a club identified by the clubUUID
+     * @param clubUUID  the key
+     * @return  success=true/false
+     */
+    public static boolean deleteClub(String clubUUID) {
+        Club club = readClubByUUID(clubUUID);
+        if (club != null) {
+            getClubList().remove(club);
+            writeClubJSON();
             return true;
         } else {
             return false;
@@ -242,6 +275,25 @@ public class DataHandler {
             fileOutputStream = new FileOutputStream(bookPath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
             objectWriter.writeValue(fileWriter, getSquadList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * writes the clubList to the JSON-file
+     */
+    private static void writeClubJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String bookPath = Config.getProperty("clubJSON");
+        try {
+            fileOutputStream = new FileOutputStream(bookPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getClubList());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
