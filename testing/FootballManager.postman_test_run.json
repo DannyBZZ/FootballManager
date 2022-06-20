@@ -1,7 +1,7 @@
 {
-	"id": "0ec8fb10-bd72-4264-b581-c2c1420c9da2",
+	"id": "28a207f8-8a61-44d2-8c20-c3bfc38c0f4c",
 	"name": "FootballManager",
-	"timestamp": "2022-05-22T15:21:04.916Z",
+	"timestamp": "2022-06-20T19:52:14.867Z",
 	"collection_id": "d42bfeac-24b0-4d64-8a42-33a2f349e309",
 	"folder_id": 0,
 	"environment_id": "0",
@@ -12,7 +12,7 @@
 			"id": "32be83d3-353c-4273-8bf7-66bffbe0a68a",
 			"name": "01_Testservice",
 			"url": "http://localhost:8080/FootballManager-1.0/resource/test/test",
-			"time": 73,
+			"time": 47,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -20,25 +20,25 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				73
+				47
 			],
 			"allTests": [
 				{}
 			]
 		},
 		{
-			"id": "51ead726-e0c1-412e-9547-a6839ffba4fc",
-			"name": "AllPlayers",
-			"url": "http://localhost:8080/FootballManager-1.0/resource/player/list",
-			"time": 54,
+			"id": "2a9e1f87-f53d-4625-995c-7f75f776b8ac",
+			"name": "InvalidURL",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/listss",
+			"time": 4,
 			"responseCode": {
-				"code": 200,
-				"name": "OK"
+				"code": 404,
+				"name": "Not Found"
 			},
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				54
+				4
 			],
 			"allTests": [
 				{}
@@ -48,10 +48,28 @@
 			"id": "6141b885-7545-4191-83aa-50fcfc431106",
 			"name": "AllSquads",
 			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/list",
-			"time": 7,
+			"time": 11,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				11
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0fd18e9c-1eec-41db-ace3-89b38c33d855",
+			"name": "SquadByUUID",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/read?squadUUID=5bff183a-d8e5-11ec-9d64-0242ac120002",
+			"time": 7,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
 			},
 			"tests": {},
 			"testPassFailCounts": {},
@@ -63,63 +81,63 @@
 			]
 		},
 		{
+			"id": "16294746-f6f0-4223-a890-2be926592179",
+			"name": "Create_Squad",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/create",
+			"time": 30,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				30
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "957b4125-4d15-4a2b-a899-cc88ebb66dec",
+			"name": "Update_Squad",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/update",
+			"time": 154,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				154
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "322aea45-f629-4786-b2a2-e5bfbd708b4b",
+			"name": "Delete_Squad",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/delete?squadUUID=612f9fdc-d8e5-11ec-9d64-0242ac120002",
+			"time": 30,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				30
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
 			"id": "e71dd2af-f467-41af-8883-a7362137d877",
 			"name": "AllClubs",
 			"url": "http://localhost:8080/FootballManager-1.0/resource/club/list",
-			"time": 6,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {},
-			"testPassFailCounts": {},
-			"times": [
-				6
-			],
-			"allTests": [
-				{}
-			]
-		},
-		{
-			"id": "3c1a3c95-8866-4210-8835-1a5de5e14c62",
-			"name": "PlayerByUUID",
-			"url": "http://localhost:8080/FootballManager-1.0/resource/player/read?playerUUID=2951e62e-d8e5-11ec-9d64-0242ac120002",
-			"time": 32,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {},
-			"testPassFailCounts": {},
-			"times": [
-				32
-			],
-			"allTests": [
-				{}
-			]
-		},
-		{
-			"id": "0fd18e9c-1eec-41db-ace3-89b38c33d855",
-			"name": "SquadByUUID",
-			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/read?squadUUID=5bff183a-d8e5-11ec-9d64-0242ac120002",
-			"time": 27,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {},
-			"testPassFailCounts": {},
-			"times": [
-				27
-			],
-			"allTests": [
-				{}
-			]
-		},
-		{
-			"id": "5fbb3d23-ddb6-4fd6-a843-9c9e6f43a9f1",
-			"name": "ClubByUUID",
-			"url": "http://localhost:8080/FootballManager-1.0/resource/club/read?clubUUID=4cf7ae2a-d8e4-11ec-9d64-0242ac120002",
 			"time": 12,
 			"responseCode": {
 				"code": 200,
@@ -135,9 +153,207 @@
 			]
 		},
 		{
-			"id": "44af82a7-3910-463b-8741-360c7d094ad8",
-			"name": "PlayerByUUID_OutOfRange",
-			"url": "http://localhost:8080/FootballManager-1.0/resource/player/read?playerUUID=10",
+			"id": "5fbb3d23-ddb6-4fd6-a843-9c9e6f43a9f1",
+			"name": "ClubByUUID",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/club/read?clubUUID=4cf7ae2a-d8e4-11ec-9d64-0242ac120002",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				17
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "320ab7e2-e131-4846-9d90-1bd87adb5748",
+			"name": "Create_Club",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/club/create",
+			"time": 41,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				41
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5844e8b7-813e-4911-8ef3-05ac0d030a8a",
+			"name": "Delete_Club",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/club/delete?clubUUID=535762b0-d8e4-11ec-9d64-0242ac120002",
+			"time": 58,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				58
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "94ab0e57-8a51-4562-8619-da40497cacfc",
+			"name": "Update_Club",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/club/update",
+			"time": 16,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				16
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "51ead726-e0c1-412e-9547-a6839ffba4fc",
+			"name": "AllPlayers",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/list",
+			"time": 27,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				27
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "3c1a3c95-8866-4210-8835-1a5de5e14c62",
+			"name": "PlayerByUUID",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/read?playerUUID=2951e62e-d8e5-11ec-9d64-0242ac120002",
+			"time": 132,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				132
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5ea921e5-cc76-48df-97fe-1fc1a045f085",
+			"name": "Unknow_Player",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/read?playerUUID=2954e62e-d8e5-11ec-9d64-0242ac120002",
+			"time": 15,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				15
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "fbc3b631-9519-43df-8209-28e6d56fc99d",
+			"name": "Create_Player",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/create",
+			"time": 34,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				34
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a59fd644-b11c-4323-a189-394ade9bab3c",
+			"name": "Update_Player",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+			"time": 18,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				18
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2279ee99-0ec5-4162-89e9-8c7a5449cb0b",
+			"name": "Update_unknowPlayer",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+			"time": 21,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				21
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b3b203d3-37f3-4d26-a8ce-610b26533624",
+			"name": "Delete_unknowPlayer",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/delete?playerUUID=12345678-abcd-ef01-2222-9876543210ac%0A",
+			"time": 14,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				14
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e141275e-608e-4280-ae03-424f8ff3d5b3",
+			"name": "Delete_Player",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/delete?playerUUID=21c35082-d8e5-11ec-9d64-0242ac120002",
 			"time": 21,
 			"responseCode": {
 				"code": 410,
@@ -153,18 +369,774 @@
 			]
 		},
 		{
-			"id": "2a9e1f87-f53d-4625-995c-7f75f776b8ac",
-			"name": "InvalidURL",
-			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/listss",
-			"time": 31,
+			"id": "3b4c55fe-283b-4963-8ac8-ddee125c9bba",
+			"name": "Create_PlayerShortFirstname",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/create",
+			"time": 32,
 			"responseCode": {
-				"code": 404,
-				"name": "Not Found"
+				"code": 400,
+				"name": "Bad Request"
 			},
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				31
+				32
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "554fdfd4-4961-4ca6-856c-b1cc58793015",
+			"name": "Create_PlayerLongFirstname",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/create",
+			"time": 23,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				23
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b6d01b0a-451c-4a4a-903b-0e2acf828a5e",
+			"name": "Create_PlayerBlankFirstname",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/create",
+			"time": 25,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				25
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8fa65eae-1a49-4bb1-a779-ad1e8fd18177",
+			"name": "Create_PlayerShortLastname",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/create",
+			"time": 24,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				24
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6f7b805f-de43-4fd9-9f8e-7693893aa107",
+			"name": "Create_PlayerLongLastname",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/create",
+			"time": 19,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				19
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6f1699d7-e8c8-45bb-a0f1-b685bf13c4d5",
+			"name": "Create_PlayerBlankLastname",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/create",
+			"time": 30,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				30
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ff580851-7197-47a1-84ed-753aba32c086",
+			"name": "Create_PlayerShortNationality",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/create",
+			"time": 19,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				19
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "831509ec-16fd-4d69-970d-1c3d7e8ec2e2",
+			"name": "Create_PlayerLongNationality",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/create",
+			"time": 48,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				48
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "73076eaa-4caf-4a21-9271-4c23893c65ff",
+			"name": "Create_PlayerBlankNationality",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/create",
+			"time": 34,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				34
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "77702bc1-5c92-49e4-a6e8-9c13760be326",
+			"name": "Create_PlayerOutOfRangeHeight",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/create",
+			"time": 44,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				44
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e5a544bb-813a-4112-a11b-2b5aa752da2f",
+			"name": "Create_PlayerOutOfRangeBlankWeight",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/create",
+			"time": 26,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				26
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2ed0e2cb-e325-4070-bdf8-fa002917bcde",
+			"name": "Create_PlayerInvalidPhonenumber",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/create",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "05d6f60b-f6d6-4d94-8757-b6a5eb59854c",
+			"name": "Create_PlayerShortPhonenumber",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/create",
+			"time": 65,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				65
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c3e413a2-e94c-4e11-a59d-7019f622575b",
+			"name": "Create_PlayerLongPhonenumber",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/create",
+			"time": 10,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "49725b02-9858-4559-ad6c-031bc7d4a5c9",
+			"name": "Update_PlayerLongFirstname",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+			"time": 10,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e31bc10c-dc5e-44ab-8f67-de49b5fad71a",
+			"name": "Update_PlayerShortFirstname",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+			"time": 108,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				108
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ddc9d2e1-58fc-4e53-9c12-f4af0067ba04",
+			"name": "Update_PlayerBlankFirstname",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+			"time": 25,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				25
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "1d7aff82-75b0-4e36-8dab-05c992e1db6a",
+			"name": "Update_PlayerLongLastname",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "807af6d3-134e-476a-8835-48fda034c2c0",
+			"name": "Update_PlayerShortLastname",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+			"time": 32,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				32
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5a3dacf8-bbb2-4e73-ba83-9aa0862b946c",
+			"name": "Update_PlayerBlankLastname",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+			"time": 11,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				11
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ec9d763c-ac43-4739-a09d-05936935d3fd",
+			"name": "Update_PlayerLongNationality",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+			"time": 11,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				11
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d187ad38-db9f-400a-966d-35bb394aea78",
+			"name": "Update_PlayerShortNationality",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+			"time": 10,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "62bc493f-6754-4d8a-b828-30b0b17a305e",
+			"name": "Update_PlayerBlankNationality",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+			"time": 12,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				12
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "bddf7537-d45c-45d7-81a7-e28b759ab842",
+			"name": "Update_PlayerBlankWeight",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+			"time": 87,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				87
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "7f91c063-32ab-4b1d-b655-4844acc38c1f",
+			"name": "Update_PlayerBlankHeight",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+			"time": 100,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				100
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6b6e0a7b-1a5a-468b-a34f-fc04f00bc5e7",
+			"name": "Update_PlayerInvalidPhonenumber",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+			"time": 14,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				14
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "cae07a6a-9ca9-4727-9528-14a3627338e3",
+			"name": "Update_PlayerLongPhonenumber",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+			"time": 15,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				15
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "754459a5-8b72-4fda-b7c8-bddc6fda0a8f",
+			"name": "Update_PlayerShortPhonenumber",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				20
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c9c6b8bd-cd4c-403a-a1d7-13c397c1aaf1",
+			"name": "Create_SquadLongManager",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/create",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c1290c36-ed75-44dd-b612-857c17148069",
+			"name": "Create_SquadShortManager",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/create",
+			"time": 13,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				13
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "82a988a0-8ceb-49f4-bc0a-73a8f59192f2",
+			"name": "Create_SquadBlankManager",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/create",
+			"time": 10,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5e98508d-7a74-4094-ae06-fb8b348c3465",
+			"name": "Create_SquadLongNationality",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/create",
+			"time": 28,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				28
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b31af9d0-a478-4440-9a87-f2d0fc31582b",
+			"name": "Create_SquadShortNationality",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/create",
+			"time": 14,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				14
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5b6783a2-9373-4d02-8065-32208ea1a652",
+			"name": "Create_SquadBlankNationality",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/create",
+			"time": 18,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				18
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "fef02795-1209-454a-8866-d47b03cb30bb",
+			"name": "Update_SquadShortManager",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/update",
+			"time": 51,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				51
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e2192fe4-4751-4fca-9501-75dc44783622",
+			"name": "Update_SquadLongManager",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/update",
+			"time": 49,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				49
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "282301b8-1f99-4eb7-b887-0bd7cdcf315e",
+			"name": "Update_SquadBlankManager",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/update",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a9d2e785-3a4f-4605-a9b1-158f108e0a97",
+			"name": "Update_SquadShortNationality",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/update",
+			"time": 12,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				12
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ffa7f7f4-8e55-418f-a398-af4377738600",
+			"name": "Update_SquadLongNationality",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/update",
+			"time": 30,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				30
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "91a23f3b-a91b-408e-b3cf-5aab1eb30583",
+			"name": "Update_SquadBlankNationality",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/update",
+			"time": 21,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				21
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "81804a17-95ee-4c4f-b87f-3e58dda8ea12",
+			"name": "Delete_InvalidSquad",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/delete?squadUUID=20d4380a-5!66-47ad-a5b4-b1c39671d46b",
+			"time": 49,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				49
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "bb0b8df1-ce84-45d4-b533-b12894c10c2c",
+			"name": "InvalidSquadByUUID",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/read?squadUUID=20d4380a-5666-47ad-a5b4-b1c39671d46b",
+			"time": 30,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				30
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0ca6e8c8-b557-4d2a-a11e-6b16805bd765",
+			"name": "Update_InvalidSquad",
+			"url": "http://localhost:8080/FootballManager-1.0/resource/squad/update",
+			"time": 6,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
 			],
 			"allTests": [
 				{}
@@ -172,7 +1144,7 @@
 		}
 	],
 	"count": 1,
-	"totalTime": 263,
+	"totalTime": 1928,
 	"collection": {
 		"requests": [
 			{
@@ -180,7 +1152,7 @@
 				"method": "GET"
 			},
 			{
-				"id": "51ead726-e0c1-412e-9547-a6839ffba4fc",
+				"id": "2a9e1f87-f53d-4625-995c-7f75f776b8ac",
 				"method": "GET"
 			},
 			{
@@ -188,15 +1160,23 @@
 				"method": "GET"
 			},
 			{
-				"id": "e71dd2af-f467-41af-8883-a7362137d877",
-				"method": "GET"
-			},
-			{
-				"id": "3c1a3c95-8866-4210-8835-1a5de5e14c62",
-				"method": "GET"
-			},
-			{
 				"id": "0fd18e9c-1eec-41db-ace3-89b38c33d855",
+				"method": "GET"
+			},
+			{
+				"id": "16294746-f6f0-4223-a890-2be926592179",
+				"method": "POST"
+			},
+			{
+				"id": "957b4125-4d15-4a2b-a899-cc88ebb66dec",
+				"method": "PUT"
+			},
+			{
+				"id": "322aea45-f629-4786-b2a2-e5bfbd708b4b",
+				"method": "DELETE"
+			},
+			{
+				"id": "e71dd2af-f467-41af-8883-a7362137d877",
 				"method": "GET"
 			},
 			{
@@ -204,12 +1184,220 @@
 				"method": "GET"
 			},
 			{
-				"id": "44af82a7-3910-463b-8741-360c7d094ad8",
+				"id": "320ab7e2-e131-4846-9d90-1bd87adb5748",
+				"method": "POST"
+			},
+			{
+				"id": "5844e8b7-813e-4911-8ef3-05ac0d030a8a",
+				"method": "DELETE"
+			},
+			{
+				"id": "94ab0e57-8a51-4562-8619-da40497cacfc",
+				"method": "PUT"
+			},
+			{
+				"id": "51ead726-e0c1-412e-9547-a6839ffba4fc",
 				"method": "GET"
 			},
 			{
-				"id": "2a9e1f87-f53d-4625-995c-7f75f776b8ac",
+				"id": "3c1a3c95-8866-4210-8835-1a5de5e14c62",
 				"method": "GET"
+			},
+			{
+				"id": "5ea921e5-cc76-48df-97fe-1fc1a045f085",
+				"method": "GET"
+			},
+			{
+				"id": "fbc3b631-9519-43df-8209-28e6d56fc99d",
+				"method": "POST"
+			},
+			{
+				"id": "a59fd644-b11c-4323-a189-394ade9bab3c",
+				"method": "PUT"
+			},
+			{
+				"id": "2279ee99-0ec5-4162-89e9-8c7a5449cb0b",
+				"method": "PUT"
+			},
+			{
+				"id": "b3b203d3-37f3-4d26-a8ce-610b26533624",
+				"method": "DELETE"
+			},
+			{
+				"id": "e141275e-608e-4280-ae03-424f8ff3d5b3",
+				"method": "DELETE"
+			},
+			{
+				"id": "3b4c55fe-283b-4963-8ac8-ddee125c9bba",
+				"method": "POST"
+			},
+			{
+				"id": "554fdfd4-4961-4ca6-856c-b1cc58793015",
+				"method": "POST"
+			},
+			{
+				"id": "b6d01b0a-451c-4a4a-903b-0e2acf828a5e",
+				"method": "POST"
+			},
+			{
+				"id": "8fa65eae-1a49-4bb1-a779-ad1e8fd18177",
+				"method": "POST"
+			},
+			{
+				"id": "6f7b805f-de43-4fd9-9f8e-7693893aa107",
+				"method": "POST"
+			},
+			{
+				"id": "6f1699d7-e8c8-45bb-a0f1-b685bf13c4d5",
+				"method": "POST"
+			},
+			{
+				"id": "ff580851-7197-47a1-84ed-753aba32c086",
+				"method": "POST"
+			},
+			{
+				"id": "831509ec-16fd-4d69-970d-1c3d7e8ec2e2",
+				"method": "POST"
+			},
+			{
+				"id": "73076eaa-4caf-4a21-9271-4c23893c65ff",
+				"method": "POST"
+			},
+			{
+				"id": "77702bc1-5c92-49e4-a6e8-9c13760be326",
+				"method": "POST"
+			},
+			{
+				"id": "e5a544bb-813a-4112-a11b-2b5aa752da2f",
+				"method": "POST"
+			},
+			{
+				"id": "2ed0e2cb-e325-4070-bdf8-fa002917bcde",
+				"method": "POST"
+			},
+			{
+				"id": "05d6f60b-f6d6-4d94-8757-b6a5eb59854c",
+				"method": "POST"
+			},
+			{
+				"id": "c3e413a2-e94c-4e11-a59d-7019f622575b",
+				"method": "POST"
+			},
+			{
+				"id": "49725b02-9858-4559-ad6c-031bc7d4a5c9",
+				"method": "PUT"
+			},
+			{
+				"id": "e31bc10c-dc5e-44ab-8f67-de49b5fad71a",
+				"method": "PUT"
+			},
+			{
+				"id": "ddc9d2e1-58fc-4e53-9c12-f4af0067ba04",
+				"method": "PUT"
+			},
+			{
+				"id": "1d7aff82-75b0-4e36-8dab-05c992e1db6a",
+				"method": "PUT"
+			},
+			{
+				"id": "807af6d3-134e-476a-8835-48fda034c2c0",
+				"method": "PUT"
+			},
+			{
+				"id": "5a3dacf8-bbb2-4e73-ba83-9aa0862b946c",
+				"method": "PUT"
+			},
+			{
+				"id": "ec9d763c-ac43-4739-a09d-05936935d3fd",
+				"method": "PUT"
+			},
+			{
+				"id": "d187ad38-db9f-400a-966d-35bb394aea78",
+				"method": "PUT"
+			},
+			{
+				"id": "62bc493f-6754-4d8a-b828-30b0b17a305e",
+				"method": "PUT"
+			},
+			{
+				"id": "bddf7537-d45c-45d7-81a7-e28b759ab842",
+				"method": "PUT"
+			},
+			{
+				"id": "7f91c063-32ab-4b1d-b655-4844acc38c1f",
+				"method": "PUT"
+			},
+			{
+				"id": "6b6e0a7b-1a5a-468b-a34f-fc04f00bc5e7",
+				"method": "PUT"
+			},
+			{
+				"id": "cae07a6a-9ca9-4727-9528-14a3627338e3",
+				"method": "PUT"
+			},
+			{
+				"id": "754459a5-8b72-4fda-b7c8-bddc6fda0a8f",
+				"method": "PUT"
+			},
+			{
+				"id": "c9c6b8bd-cd4c-403a-a1d7-13c397c1aaf1",
+				"method": "POST"
+			},
+			{
+				"id": "c1290c36-ed75-44dd-b612-857c17148069",
+				"method": "POST"
+			},
+			{
+				"id": "82a988a0-8ceb-49f4-bc0a-73a8f59192f2",
+				"method": "POST"
+			},
+			{
+				"id": "5e98508d-7a74-4094-ae06-fb8b348c3465",
+				"method": "POST"
+			},
+			{
+				"id": "b31af9d0-a478-4440-9a87-f2d0fc31582b",
+				"method": "POST"
+			},
+			{
+				"id": "5b6783a2-9373-4d02-8065-32208ea1a652",
+				"method": "POST"
+			},
+			{
+				"id": "fef02795-1209-454a-8866-d47b03cb30bb",
+				"method": "PUT"
+			},
+			{
+				"id": "e2192fe4-4751-4fca-9501-75dc44783622",
+				"method": "PUT"
+			},
+			{
+				"id": "282301b8-1f99-4eb7-b887-0bd7cdcf315e",
+				"method": "PUT"
+			},
+			{
+				"id": "a9d2e785-3a4f-4605-a9b1-158f108e0a97",
+				"method": "PUT"
+			},
+			{
+				"id": "ffa7f7f4-8e55-418f-a398-af4377738600",
+				"method": "PUT"
+			},
+			{
+				"id": "91a23f3b-a91b-408e-b3cf-5aab1eb30583",
+				"method": "PUT"
+			},
+			{
+				"id": "81804a17-95ee-4c4f-b87f-3e58dda8ea12",
+				"method": "DELETE"
+			},
+			{
+				"id": "bb0b8df1-ce84-45d4-b533-b12894c10c2c",
+				"method": "GET"
+			},
+			{
+				"id": "0ca6e8c8-b557-4d2a-a11e-6b16805bd765",
+				"method": "PUT"
 			}
 		]
 	}
