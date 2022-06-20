@@ -3,6 +3,9 @@ package ch.bzz.footballmanager.service;
 import ch.bzz.footballmanager.data.DataHandler;
 import ch.bzz.footballmanager.model.Player;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -31,9 +34,16 @@ public class Playerservice {
                 .build();
     }
 
+    /**
+     * read player by playerUUID
+     * @return Response
+     */
+
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
+    @NotEmpty
+    @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     public Response readPlayers(@QueryParam("playerUUID") String playerUUID) {
         int httpStatus = 200;
         Player player = DataHandler.readPlayerByUUID(playerUUID);
@@ -48,36 +58,15 @@ public class Playerservice {
 
     /**
      * inserts a new player
-     * @param firstname the firstname of the player
-     * @param lastname the lastname of the player
-     * @param nationality the nationality of the player
-     * @param height the height of the player
-     * @param weight the weight of the player
-     * @param phonenumber the phonenumber of the player
      * @return Response
      */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertPlayer(
-            @FormParam("firstname") String firstname,
-            @FormParam("lastname") String lastname,
-            @FormParam("nationality") String nationality,
-            @FormParam("height") double height,
-            @FormParam("weight") int weight,
-            @FormParam("phonenumber") String phonenumber
+           @Valid @BeanParam Player player
     ) {
-        Player player = new Player();
         player.setPlayerUUID(UUID.randomUUID().toString());
-        setAttributes(
-                player,
-                firstname,
-                lastname,
-                nationality,
-                height,
-                weight,
-                phonenumber
-        );
 
         DataHandler.insertPlayer(player);
         return Response
@@ -88,39 +77,23 @@ public class Playerservice {
 
     /**
      * updates a new player
-     * @param playerUUID the key
-     * @param firstname the firstname of the player
-     * @param lastname the lastname of the player
-     * @param nationality the nationality of the player
-     * @param height the height of the player
-     * @param weight the weight of the player
-     * @param phonenumber the phonenumber of the player
      * @return Response
      */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateBook(
-            @FormParam("playerUUID") String playerUUID,
-            @FormParam("firstname") String firstname,
-            @FormParam("lastname") String lastname,
-            @FormParam("nationality") String nationality,
-            @FormParam("height") double height,
-            @FormParam("weight") int weight,
-            @FormParam("phonenumber") String phonenumber
+            @Valid @BeanParam Player player
     ) {
         int httpStatus = 200;
-        Player player = DataHandler.readPlayerByUUID(playerUUID);
-        if (player != null) {
-            setAttributes(
-                    player,
-                    firstname,
-                    lastname,
-                    nationality,
-                    height,
-                    weight,
-                    phonenumber
-            );
+        Player oldplayer = DataHandler.readPlayerByUUID(player.getPlayerUUID());
+        if (oldplayer != null) {
+            oldplayer.setFirstname(player.getFirstname());
+            oldplayer.setLastname(player.getLastname());
+            oldplayer.setNationality(player.getNationality());
+            oldplayer.setWeight(player.getWeight());
+            oldplayer.setHeight(player.getHeight());
+            oldplayer.setPhonenumber(player.getPhonenumber());
 
             DataHandler.updatePlayer();
         } else {
@@ -141,6 +114,8 @@ public class Playerservice {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deletePlayer(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("playerUUID") String playerUUID
     ) {
         int httpStatus = 200;
@@ -151,32 +126,5 @@ public class Playerservice {
                 .status(httpStatus)
                 .entity("")
                 .build();
-    }
-
-    /**
-     * sets the attributes for the player-object
-     * @param player the player-object
-     * @param firstname the firstname of the player
-     * @param lastname the lastname of the player
-     * @param nationality the nationality of the player
-     * @param height the height of the player
-     * @param weight the weight of the player
-     * @param phonenumber the phonenumber of the player
-     */
-    private void setAttributes(
-            Player player,
-            String firstname,
-            String lastname,
-            String nationality,
-            double height,
-            int weight,
-            String phonenumber
-    ) {
-        player.setFirstname(firstname);
-        player.setLastname(lastname);
-        player.setNationality(nationality);
-        player.setHeight(height);
-        player.setWeight(weight);
-        player.setPhonenumber(phonenumber);
     }
 }

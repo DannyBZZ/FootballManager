@@ -1,8 +1,21 @@
 package ch.bzz.footballmanager.model;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
+
 public class Squad {
+
+    @FormParam("squadUUID")
+    @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String squadUUID;
+
+    @FormParam("manager")
+    @Size(min = 2, max = 45)
     private String manager;
+
+    @FormParam("nationality")
+    @Size(min = 2, max = 45)
     private String nationality;
 
     /**

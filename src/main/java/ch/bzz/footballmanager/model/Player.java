@@ -1,15 +1,36 @@
 package ch.bzz.footballmanager.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.validation.constraints.*;
+import javax.ws.rs.FormParam;
 
 public class Player {
 
+    @FormParam("playerUUID")
+    @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String playerUUID;
+
+    @FormParam("firstname")
+    @Size(min = 2, max = 45)
     private String firstname;
+
+    @FormParam("lastname")
+    @Size(min = 2, max = 45)
     private String lastname;
+
+    @FormParam("nationality")
+    @Size(min = 2, max = 45)
     private String nationality;
+
+    @FormParam("height")
+    @Max(value = 3)
     private double height;
+
+    @FormParam("weight")
+    @Max(value = 250)
     private int weight;
+
+    @FormParam("phonenumber")
+    @Size(min = 2, max = 13)
     private String phonenumber;
 
     /**
