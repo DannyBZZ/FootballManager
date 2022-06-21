@@ -21,7 +21,8 @@ public class Squadservice {
 
     /**
      * confirms the application runs
-     * @return  message
+     *
+     * @return message
      */
     @GET
     @Path("list")
@@ -36,18 +37,19 @@ public class Squadservice {
 
     /**
      * read a squad by squadUUID
+     *
      * @return Response
      */
 
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    @NotEmpty
-    @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-    public Response readPlayers(@QueryParam("squadUUID") String squadUUID) {
+    public Response readSquad(@NotEmpty
+                                @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                                @QueryParam("squadUUID") String squadUUID) {
         int httpStatus = 200;
         Squad squad = DataHandler.readSquadByUUID(squadUUID);
-        if(squad == null){
+        if (squad == null) {
             httpStatus = 410;
         }
         return Response
@@ -58,6 +60,7 @@ public class Squadservice {
 
     /**
      * inserts a new squad
+     *
      * @return Response
      */
     @POST
@@ -77,6 +80,7 @@ public class Squadservice {
 
     /**
      * updates a new squad
+     *
      * @return Response
      */
     @PUT
@@ -103,8 +107,9 @@ public class Squadservice {
 
     /**
      * deletes a squad identified by its squadUUID
-     * @param squadUUID  the key
-     * @return  Response
+     *
+     * @param squadUUID the key
+     * @return Response
      */
     @DELETE
     @Path("delete")

@@ -21,7 +21,8 @@ public class Playerservice {
 
     /**
      * confirms the application runs
-     * @return  message
+     *
+     * @return message
      */
     @GET
     @Path("list")
@@ -36,18 +37,18 @@ public class Playerservice {
 
     /**
      * read player by playerUUID
+     *
      * @return Response
      */
 
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    @NotEmpty
-    @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-    public Response readPlayers(@QueryParam("playerUUID") String playerUUID) {
+    public Response readPlayers(@NotEmpty
+                                @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") @QueryParam("playerUUID") String playerUUID) {
         int httpStatus = 200;
         Player player = DataHandler.readPlayerByUUID(playerUUID);
-        if(player == null){
+        if (player == null) {
             httpStatus = 410;
         }
         return Response
@@ -58,13 +59,14 @@ public class Playerservice {
 
     /**
      * inserts a new player
+     *
      * @return Response
      */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertPlayer(
-           @Valid @BeanParam Player player
+            @Valid @BeanParam Player player
     ) {
         player.setPlayerUUID(UUID.randomUUID().toString());
 
@@ -77,6 +79,7 @@ public class Playerservice {
 
     /**
      * updates a new player
+     *
      * @return Response
      */
     @PUT
@@ -107,8 +110,9 @@ public class Playerservice {
 
     /**
      * deletes a player identified by its playerUUID
-     * @param playerUUID  the key
-     * @return  Response
+     *
+     * @param playerUUID the key
+     * @return Response
      */
     @DELETE
     @Path("delete")
