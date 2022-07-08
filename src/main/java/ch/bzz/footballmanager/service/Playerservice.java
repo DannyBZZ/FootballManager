@@ -27,10 +27,19 @@ public class Playerservice {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listPlayers() {
-        List<Player> playerList = DataHandler.readAllPlayers();
+    public Response listPlayers(
+            @CookieParam("userRole") String userRole
+    ) {
+        List<Player> playerList = null;
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
+        }else {
+            httpStatus = 200;
+            playerList = DataHandler.readAllPlayers();
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(playerList)
                 .build();
     }
