@@ -1,0 +1,604 @@
+{
+	"info": {
+		"_postman_id": "f6a3c32a-fbec-4f3b-b0ec-6da12881f8b2",
+		"name": "FootballManger",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "Danny",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Danny123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListPlayers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/player/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"player",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListSquad",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/squad/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"squad",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListClub",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/club/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"club",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReadPlayer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/player/read?playerUUID=33ce461a-d8e5-11ec-9d64-0242ac120002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"player",
+						"read"
+					],
+					"query": [
+						{
+							"key": "playerUUID",
+							"value": "33ce461a-d8e5-11ec-9d64-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReadSquad",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/squad/read?squadUUID=5bff183a-d8e5-11ec-9d64-0242ac120002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"squad",
+						"read"
+					],
+					"query": [
+						{
+							"key": "squadUUID",
+							"value": "5bff183a-d8e5-11ec-9d64-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReadClub",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/club/read?clubUUID=4cf7ae2a-d8e4-11ec-9d64-0242ac120002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"club",
+						"read"
+					],
+					"query": [
+						{
+							"key": "clubUUID",
+							"value": "4cf7ae2a-d8e4-11ec-9d64-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePlayer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "Danny",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Logiurato",
+							"type": "text"
+						},
+						{
+							"key": "nationality",
+							"value": "Italy",
+							"type": "text"
+						},
+						{
+							"key": "height",
+							"value": "1.74",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "60",
+							"type": "text"
+						},
+						{
+							"key": "phonenumber",
+							"value": "+41765796",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/player/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"player",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateSquad",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "manager",
+							"value": "Carlo",
+							"type": "text"
+						},
+						{
+							"key": "nationality",
+							"value": "Italy",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/squad/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"squad",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateClub",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Real Madrid",
+							"type": "text"
+						},
+						{
+							"key": "league",
+							"value": "LaLiga",
+							"type": "text"
+						},
+						{
+							"key": "stadium",
+							"value": "Bernabeu",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/club/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"club",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdatePlayer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "playerUUID",
+							"value": "33ce461a-d8e5-11ec-9d64-0242ac120002",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "Nicolo",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Barella",
+							"type": "text"
+						},
+						{
+							"key": "nationality",
+							"value": "Italy",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "80",
+							"type": "text"
+						},
+						{
+							"key": "height",
+							"value": "1.70",
+							"type": "text"
+						},
+						{
+							"key": "phonenumber",
+							"value": "076 759 40 49",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/player/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"player",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateSquad",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "squadUUID",
+							"value": "612f9fdc-d8e5-11ec-9d64-0242ac120002",
+							"type": "text"
+						},
+						{
+							"key": "manager",
+							"value": "Gattuso",
+							"type": "text"
+						},
+						{
+							"key": "nationality",
+							"value": "Italy",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/squad/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"squad",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateClub",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "clubUUID",
+							"value": "587e27ba-d8e4-11ec-9d64-0242ac120002",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Bayern",
+							"type": "text"
+						},
+						{
+							"key": "league",
+							"value": "Bundesliga",
+							"type": "text"
+						},
+						{
+							"key": "stadium",
+							"value": "AllianzArena",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/club/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"club",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeletePlayer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/player/delete?playerUUID=21c35082-d8e5-11ec-9d64-0242ac120002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"player",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "playerUUID",
+							"value": "21c35082-d8e5-11ec-9d64-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteSquad",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/squad/delete?squadUUID=0fe2e88a-d357-4946-84bc-351d63cc46c5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"squad",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "squadUUID",
+							"value": "0fe2e88a-d357-4946-84bc-351d63cc46c5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteClub",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/club/delete?clubUUID=535762b0-d8e4-11ec-9d64-0242ac120002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"club",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "clubUUID",
+							"value": "535762b0-d8e4-11ec-9d64-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "Danny",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Danny123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/user/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"user",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
