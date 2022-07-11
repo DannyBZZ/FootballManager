@@ -1,10 +1,16 @@
 package ch.bzz.footballmanager.model;
 
 
+import javax.ws.rs.FormParam;
+
 public class Club {
+    @FormParam("clubUUID")
     private String clubUUID;
+    @FormParam("name")
     private String name;
+    @FormParam("league")
     private String league;
+    @FormParam("stadium")
     private String stadium;
 
     /**

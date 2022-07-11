@@ -9,7 +9,6 @@ import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,9 +31,9 @@ public class Playerservice {
     ) {
         List<Player> playerList = null;
         int httpStatus;
-        if (userRole == null || userRole.equals("guest")){
+        if (userRole == null || userRole.equals("guest")) {
             httpStatus = 403;
-        }else {
+        } else {
             httpStatus = 200;
             playerList = DataHandler.readAllPlayers();
         }
@@ -53,13 +52,25 @@ public class Playerservice {
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readPlayers(@NotEmpty
-                                @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") @QueryParam("playerUUID") String playerUUID) {
-        int httpStatus = 200;
-        Player player = DataHandler.readPlayerByUUID(playerUUID);
+    public Response readPlayers(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") @QueryParam("playerUUID") String playerUUID,
+            @CookieParam("userRole") String userRole) {
+
+        int httpStatus;
+        Player player = null;
+
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+            player = DataHandler.readPlayerByUUID(playerUUID);
+        }
+
         if (player == null) {
             httpStatus = 410;
         }
+
         return Response
                 .status(httpStatus)
                 .entity(player)
@@ -75,13 +86,19 @@ public class Playerservice {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertPlayer(
-            @Valid @BeanParam Player player
+            @Valid @BeanParam Player player,
+            @CookieParam("userRole") String userRole
     ) {
-        player.setPlayerUUID(UUID.randomUUID().toString());
-
-        DataHandler.insertPlayer(player);
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+            player.setPlayerUUID(UUID.randomUUID().toString());
+            DataHandler.insertPlayer(player);
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity("")
                 .build();
     }
@@ -95,21 +112,27 @@ public class Playerservice {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateBook(
-            @Valid @BeanParam Player player
+            @Valid @BeanParam Player player,
+            @CookieParam("userRole") String userRole
     ) {
-        int httpStatus = 200;
+        int httpStatus;
         Player oldplayer = DataHandler.readPlayerByUUID(player.getPlayerUUID());
-        if (oldplayer != null) {
-            oldplayer.setFirstname(player.getFirstname());
-            oldplayer.setLastname(player.getLastname());
-            oldplayer.setNationality(player.getNationality());
-            oldplayer.setWeight(player.getWeight());
-            oldplayer.setHeight(player.getHeight());
-            oldplayer.setPhonenumber(player.getPhonenumber());
 
-            DataHandler.updatePlayer();
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
         } else {
-            httpStatus = 410;
+            httpStatus = 200;
+            if (oldplayer != null) {
+                oldplayer.setFirstname(player.getFirstname());
+                oldplayer.setLastname(player.getLastname());
+                oldplayer.setNationality(player.getNationality());
+                oldplayer.setWeight(player.getWeight());
+                oldplayer.setHeight(player.getHeight());
+                oldplayer.setPhonenumber(player.getPhonenumber());
+                DataHandler.updatePlayer();
+            } else {
+                httpStatus = 410;
+            }
         }
         return Response
                 .status(httpStatus)
@@ -129,12 +152,20 @@ public class Playerservice {
     public Response deletePlayer(
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @QueryParam("playerUUID") String playerUUID
+            @QueryParam("playerUUID") String playerUUID,
+            @CookieParam("userRole") String userRole
     ) {
-        int httpStatus = 200;
-        if (!DataHandler.deletePlayer(playerUUID)) {
-            httpStatus = 410;
+        int httpStatus;
+
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+            if (!DataHandler.deletePlayer(playerUUID)) {
+                httpStatus = 410;
+            }
         }
+
         return Response
                 .status(httpStatus)
                 .entity("")

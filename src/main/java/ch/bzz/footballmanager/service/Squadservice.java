@@ -27,10 +27,21 @@ public class Squadservice {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listSquads() {
-        List<Squad> squadList = DataHandler.readAllSquads();
+    public Response listSquads(
+            @CookieParam("userRole") String userRole
+    ) {
+        List<Squad> squadList = null;
+        int httpStatus;
+
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+            squadList = DataHandler.readAllSquads();
+        }
+
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(squadList)
                 .build();
     }
@@ -45,10 +56,19 @@ public class Squadservice {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readSquad(@NotEmpty
-                                @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                @QueryParam("squadUUID") String squadUUID) {
-        int httpStatus = 200;
-        Squad squad = DataHandler.readSquadByUUID(squadUUID);
+                              @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                              @QueryParam("squadUUID") String squadUUID,
+                              @CookieParam("userRole") String userRole) {
+
+        int httpStatus;
+        Squad squad = null;
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+            squad = DataHandler.readSquadByUUID(squadUUID);
+        }
+
         if (squad == null) {
             httpStatus = 410;
         }
@@ -67,13 +87,20 @@ public class Squadservice {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertSquad(
-            @Valid @BeanParam Squad squad
+            @Valid @BeanParam Squad squad,
+            @CookieParam("userRole") String userRole
     ) {
-        squad.setSquadUUID(UUID.randomUUID().toString());
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+            squad.setSquadUUID(UUID.randomUUID().toString());
+            DataHandler.insertSquad(squad);
+        }
 
-        DataHandler.insertSquad(squad);
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity("")
                 .build();
     }
@@ -87,17 +114,23 @@ public class Squadservice {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateSquad(
-            @Valid @BeanParam Squad squad
+            @Valid @BeanParam Squad squad,
+            @CookieParam("userRole") String userRole
     ) {
-        int httpStatus = 200;
+        int httpStatus;
         Squad oldsquad = DataHandler.readSquadByUUID(squad.getSquadUUID());
-        if (oldsquad != null) {
-            oldsquad.setManager(squad.getManager());
-            oldsquad.setNationality(squad.getNationality());
 
-            DataHandler.updateSquad();
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
         } else {
-            httpStatus = 410;
+            httpStatus = 200;
+            if (oldsquad != null) {
+                oldsquad.setManager(squad.getManager());
+                oldsquad.setNationality(squad.getNationality());
+                DataHandler.updateSquad();
+            } else {
+                httpStatus = 410;
+            }
         }
         return Response
                 .status(httpStatus)
@@ -117,11 +150,18 @@ public class Squadservice {
     public Response deleteSquad(
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @QueryParam("squadUUID") String squadUUID
+            @QueryParam("squadUUID") String squadUUID,
+            @CookieParam("userRole") String userRole
     ) {
-        int httpStatus = 200;
-        if (!DataHandler.deleteSquad(squadUUID)) {
-            httpStatus = 410;
+        int httpStatus;
+
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+            if (!DataHandler.deleteSquad(squadUUID)) {
+                httpStatus = 410;
+            }
         }
         return Response
                 .status(httpStatus)

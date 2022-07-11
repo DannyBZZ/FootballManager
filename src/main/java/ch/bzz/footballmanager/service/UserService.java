@@ -4,7 +4,6 @@ import ch.bzz.footballmanager.data.UserData;
 import ch.bzz.footballmanager.model.User;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.Cookie;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;

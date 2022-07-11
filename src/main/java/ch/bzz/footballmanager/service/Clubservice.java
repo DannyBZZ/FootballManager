@@ -2,8 +2,8 @@ package ch.bzz.footballmanager.service;
 
 import ch.bzz.footballmanager.data.DataHandler;
 import ch.bzz.footballmanager.model.Club;
-import ch.bzz.footballmanager.model.Squad;
 
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -18,15 +18,27 @@ public class Clubservice {
 
     /**
      * confirms the application runs
-     * @return  message
+     *
+     * @return message
      */
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listClubs() {
-        List<Club> clubList = DataHandler.readAllClubs();
+    public Response listClubs(
+            @CookieParam("userRole") String userRole
+    ) {
+        List<Club> clubList = null;
+        int httpStatus;
+
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+            clubList = DataHandler.readAllClubs();
+        }
+
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(clubList)
                 .build();
     }
@@ -34,12 +46,24 @@ public class Clubservice {
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readClubs(@QueryParam("clubUUID") String clubUUID) {
-        int httpStatus = 200;
-        Club club = DataHandler.readClubByUUID(clubUUID);
-        if(club == null){
+    public Response readClubs(
+            @QueryParam("clubUUID") String clubUUID,
+            @CookieParam("userRole") String userRole
+    ) {
+        int httpStatus;
+
+        Club club = null;
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+            club = DataHandler.readClubByUUID(clubUUID);
+        }
+
+        if (club == null) {
             httpStatus = 410;
         }
+
         return Response
                 .status(httpStatus)
                 .entity(club)
@@ -48,65 +72,58 @@ public class Clubservice {
 
     /**
      * inserts a new club
-     * @param name the name of the club
-     * @param league the league of the club
-     * @param stadium the stadium of the club
+     *
      * @return Response
      */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertClub(
-            @FormParam("name") String name,
-            @FormParam("league") String league,
-            @FormParam("stadium") String stadium
+            @Valid @BeanParam Club club,
+            @CookieParam("userRole") String userRole
     ) {
-        Club club = new Club();
-        club.setClubUUID(UUID.randomUUID().toString());
-        setAttributes(
-                club,
-                name,
-                league,
-                stadium
-        );
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+            club.setClubUUID(UUID.randomUUID().toString());
+            DataHandler.insertClub(club);
+        }
 
-        DataHandler.insertClub(club);
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity("")
                 .build();
     }
 
     /**
      * updates a new club
-     * @param clubUUID the key
-     * @param name the name of the club
-     * @param league the league of the club
-     * @param stadium the stadium of the club
+     *
      * @return Response
      */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateClub(
-            @FormParam("clubUUID") String clubUUID,
-            @FormParam("name") String name,
-            @FormParam("league") String league,
-            @FormParam("stadium") String stadium
+            @Valid @BeanParam Club club,
+            @CookieParam("userRole") String userRole
     ) {
-        int httpStatus = 200;
-        Club club = DataHandler.readClubByUUID(clubUUID);
-        if (club != null) {
-            setAttributes(
-                    club,
-                    name,
-                    league,
-                    stadium
-            );
+        int httpStatus;
+        Club oldclub = DataHandler.readClubByUUID(club.getClubUUID());
 
-            DataHandler.updateClub();
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
         } else {
-            httpStatus = 410;
+            httpStatus = 200;
+            if (oldclub != null) {
+                oldclub.setName(club.getName());
+                oldclub.setLeague(club.getLeague());
+                oldclub.setStadium(club.getStadium());
+                DataHandler.updateClub();
+            } else {
+                httpStatus = 410;
+            }
         }
         return Response
                 .status(httpStatus)
@@ -116,40 +133,31 @@ public class Clubservice {
 
     /**
      * deletes a club identified by its clubUUID
-     * @param clubUUID  the key
-     * @return  Response
+     *
+     * @param clubUUID the key
+     * @return Response
      */
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteClub(
-            @QueryParam("clubUUID") String clubUUID
+            @QueryParam("clubUUID") String clubUUID,
+            @CookieParam("userRole") String userRole
     ) {
-        int httpStatus = 200;
-        if (!DataHandler.deleteClub(clubUUID)) {
-            httpStatus = 410;
+        int httpStatus;
+
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+            if (!DataHandler.deleteClub(clubUUID)) {
+                httpStatus = 410;
+            }
         }
+
         return Response
                 .status(httpStatus)
                 .entity("")
                 .build();
-    }
-
-    /**
-     * sets the attributes for the club-object
-     * @param club the club-object
-     * @param name the name of the club
-     * @param league the league of the club
-     * @param stadium the stadium of the club
-     */
-    private void setAttributes(
-            Club club,
-            String name,
-            String league,
-            String stadium
-    ) {
-        club.setName(name);
-        club.setLeague(league);
-        club.setStadium(stadium);
     }
 }
