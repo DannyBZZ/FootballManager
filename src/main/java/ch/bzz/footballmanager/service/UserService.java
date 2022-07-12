@@ -55,6 +55,11 @@ public class UserService {
         return response;
     }
 
+    /**
+     * logout
+     *
+     * @return Response
+     */
     @DELETE
     @Path("logout")
     @Produces(MediaType.TEXT_PLAIN)

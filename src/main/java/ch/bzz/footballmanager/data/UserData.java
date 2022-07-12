@@ -17,6 +17,7 @@ public class UserData {
 
     /**
      * finds a user by username / password
+     *
      * @param username
      * @param password
      * @return User object / null=not found
