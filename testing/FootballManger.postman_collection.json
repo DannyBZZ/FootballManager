@@ -6,7 +6,120 @@
 	},
 	"item": [
 		{
+			"name": "Wrong_Username",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "Danny3",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Danny123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Wrong_Password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "Danny",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Danny1233",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FootballManager-1.0",
+						"resource",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -44,6 +157,19 @@
 		},
 		{
 			"name": "ListPlayers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -66,6 +192,19 @@
 		},
 		{
 			"name": "ListSquad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -88,6 +227,19 @@
 		},
 		{
 			"name": "ListClub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -110,6 +262,19 @@
 		},
 		{
 			"name": "ReadPlayer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -138,6 +303,19 @@
 		},
 		{
 			"name": "ReadSquad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -166,6 +344,19 @@
 		},
 		{
 			"name": "ReadClub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -194,6 +385,23 @@
 		},
 		{
 			"name": "CreatePlayer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -251,6 +459,23 @@
 		},
 		{
 			"name": "CreateSquad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -288,6 +513,23 @@
 		},
 		{
 			"name": "CreateClub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -330,6 +572,19 @@
 		},
 		{
 			"name": "UpdatePlayer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -392,6 +647,19 @@
 		},
 		{
 			"name": "UpdateSquad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -434,6 +702,19 @@
 		},
 		{
 			"name": "UpdateClub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -481,11 +762,24 @@
 		},
 		{
 			"name": "DeletePlayer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/FootballManager-1.0/resource/player/delete?playerUUID=21c35082-d8e5-11ec-9d64-0242ac120002",
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/player/delete?playerUUID=2951e62e-d8e5-11ec-9d64-0242ac120002",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -500,7 +794,7 @@
 					"query": [
 						{
 							"key": "playerUUID",
-							"value": "21c35082-d8e5-11ec-9d64-0242ac120002"
+							"value": "2951e62e-d8e5-11ec-9d64-0242ac120002"
 						}
 					]
 				}
@@ -509,11 +803,24 @@
 		},
 		{
 			"name": "DeleteSquad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/FootballManager-1.0/resource/squad/delete?squadUUID=0fe2e88a-d357-4946-84bc-351d63cc46c5",
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/squad/delete?squadUUID=5bff183a-d8e5-11ec-9d64-0242ac120002",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -528,7 +835,7 @@
 					"query": [
 						{
 							"key": "squadUUID",
-							"value": "0fe2e88a-d357-4946-84bc-351d63cc46c5"
+							"value": "5bff183a-d8e5-11ec-9d64-0242ac120002"
 						}
 					]
 				}
@@ -537,11 +844,24 @@
 		},
 		{
 			"name": "DeleteClub",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/FootballManager-1.0/resource/club/delete?clubUUID=535762b0-d8e4-11ec-9d64-0242ac120002",
+					"raw": "http://localhost:8080/FootballManager-1.0/resource/club/delete?clubUUID=4cf7ae2a-d8e4-11ec-9d64-0242ac120002",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -556,7 +876,7 @@
 					"query": [
 						{
 							"key": "clubUUID",
-							"value": "535762b0-d8e4-11ec-9d64-0242ac120002"
+							"value": "4cf7ae2a-d8e4-11ec-9d64-0242ac120002"
 						}
 					]
 				}
@@ -565,24 +885,22 @@
 		},
 		{
 			"name": "Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "username",
-							"value": "Danny",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "Danny123",
-							"type": "text"
-						}
-					]
-				},
 				"url": {
 					"raw": "http://localhost:8080/FootballManager-1.0/resource/user/logout",
 					"protocol": "http",
